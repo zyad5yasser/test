@@ -7,7 +7,7 @@ try {
 const res = await googleImage(text)
 let image = res.getRandom()
 let link = image
-conn.sendButton(m.chat, `${mid.buscador}: ${text}`, wm, link, [['صوره تاني', `/imagen ${text}`]], null, null, m )
+conn.sendButton(m.chat, `صوره لـ: ${text}`, wm, image, [['صوره تاني', `/imagen ${text}`]], null, null, m )
 //conn.sendFile(m.chat, link, 'error.jpg', `💞 ${mid.buscador}: ${text}`, m)
 } catch (e) {
 console.log(`❗❗ خطأ في ${usedPrefix + command} ❗❗`);
