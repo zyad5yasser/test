@@ -1,9 +1,9 @@
 import fetch from 'node-fetch'
 let handler = async (m, { conn, command }) => {
-if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `${lenguajeGB['smsContAdult']()}`
+/*if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `${lenguajeGB['smsContAdult']()}`*/
 let url = pies[Math.floor(Math.random() * pies.length)]
-conn.sendFile(m.chat, url, 'error.jpg', ` ♥ *استمع للراحه النفسيه* ♥                                                                                                     𝙎𝙖𝙛𝙧𝙤𝙩𝘽𝙤𝙩-𝙈𝘿`, m)
-//conn.sendButton(m.chat, `♥ استمع للراحه النفسيه ♥ `, author, url, [['𝙎𝙄𝙂𝙐𝙄𝙀𝙉𝙏𝙀 | 𝙉𝙀𝙓𝙏 🆕', `/${command}`]], m)
+//conn.sendFile(m.chat, url, 'error.jpg', ` ♥ *استمع للراحه النفسيه* ♥                                                                                                     𝙎𝙖𝙛𝙧𝙤𝙩𝘽𝙤𝙩-𝙈𝘿`, m)
+conn.sendButton(m.chat, `♥ استمع للراحه النفسيه ♥ `, author, url, [['واحد تاني🥺🤍', `/${command}`]], m)
 }
 handler.help = ['قران']
 handler.tags = ['internet']
