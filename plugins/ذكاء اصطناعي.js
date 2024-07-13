@@ -12,7 +12,7 @@ let handler = async (m, {
     } else if (m.quoted && m.quoted.text) {
         text = m.quoted.text
     } else throw "\n🧸💜علشان ارد علي اي سوال نقطه سفروت وكتب سوالك"
-    await m.reply(wait)
+    
     const messages = [
     { role: 'system', content: 'You are a helpful assistant.' },
     { role: 'user', content: text },
