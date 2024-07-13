@@ -68,7 +68,7 @@ const handler = async (m, { command, usedPrefix, conn, text }) => {
           message: {
             interactiveMessage: {
               body: { text: dataMessage },
-              footer: { text: `©${global.wm}`.trim() },
+              footer: { text: `𝙎𝙖𝙛𝙧𝙤𝙩-𝙈𝘿🦦`.trim() },
               header: {
                 hasMediaAttachment: true,
                 imageMessage: messa.imageMessage,
