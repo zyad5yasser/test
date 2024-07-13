@@ -31,7 +31,7 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
   						  		    rows: [
   						  		    	{
   						  		    		header: '◡̈⃝˼‏📖˹ ━━|قسم الادمن│━━˼‏📖˹◡̈⃝',
-  										      title: '𝙏𝙝𝙚𝙎𝙖𝙛𝙧𝙤𝙩𝘽𝙤𝙩',
+  										      title: 'ₛₐfᵣₒₜ bₒₜ',
   									    	  description: '◡̈⃝˼‏📖˹ ━━|قسم الادمن│━━˼‏📖˹◡̈⃝',
   								    		  id: '.سفروت1'
   						  		    	}
@@ -42,7 +42,7 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
   						  				rows: [
   						  					{
   						  		    		header: '🚻 ◡̈⃝☠︎︎━━ |قسم الاعضاء│━━☠︎︎🚻 ◡̈⃝‎',
-  										      title: '𝙏𝙝𝙚𝙎𝙖𝙛𝙧𝙤𝙩𝘽𝙤𝙩',
+  										      title: 'ₛₐfᵣₒₜ bₒₜ',
   									    	  description: '🚻 ◡̈⃝☠︎︎━━ |قسم الاعضاء│━━☠︎︎🚻 ◡̈⃝‎',
   								    		  id: '.سفروت2'
   						  		    	}
@@ -183,5 +183,5 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
 };
 handler.help = ['imgboton'];
 handler.tags = ['For Test'];
-handler.command = /^(noo)$/i;
+handler.command = /^(help|الاوامر|menu|أوامر|menu|اوامر)$/i;
 export default handler;
