@@ -183,5 +183,5 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
 };
 handler.help = ['imgboton'];
 handler.tags = ['For Test'];
-handler.command = /^(اوامر|الاوامر|أوامر|الأوامر|menu)$/i;
+handler.command = /^(noo)$/i;
 export default handler;
