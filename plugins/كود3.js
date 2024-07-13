@@ -13,7 +13,7 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
             body: { text: `test`.trim() },
             footer: { text: `𝙏𝙝𝙚𝙎𝙖𝙛𝙧𝙤𝙩𝘽𝙤𝙩`.trim() },  
             header: {
-                title: `*┃━━━━━⬣♯ЅᗩFᏒOT꙯-𝙱𝙾𝚃⬣━━━━━┃*\n\n*◞❐نورت يا حب بوت سفروت🤺🔥*\n\n*◞❐ تفضل القائمة يا  :* @${mentionId.split('@')[0]}`,
+                title: `*┃━━━━━⬣ₛₐfᵣₒₜ bₒₜ⬣━━━━━┃*\n\n*◞❐نورت يا حب بوت سفروت🤺🔥*\n\n*◞❐ تفضل القائمة يا  :* @${mentionId.split('@')[0]}`,
                 subtitle: ``,
                 hasMediaAttachment: true,
                 imageMessage: joanimiimg.imageMessage,
@@ -48,6 +48,17 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
   						  		    	}
   						  				]
   						        	},
+  						  			{
+  						  				highlight_label: 'ON',
+  						  				rows: [
+  						  					{
+  						  		    		header: '🂱◡̈⃝📿━━│قسم الديني│━━◡̈⃝🂱📿',
+  										      title: '',
+  									    	  description: '🂱◡̈⃝📿━━│قسم الديني│━━◡̈⃝🂱📿',
+  								    		  id: '.سفروت3'
+  						  		    	}
+  						  				]
+                                        
   						  			{
   						  				highlight_label: 'ON',
   						  				rows: [
