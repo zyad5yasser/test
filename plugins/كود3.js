@@ -10,7 +10,7 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
     if (device !== 'desktop' || device !== 'web') {      
         var joanimiimg = await prepareWAMessageMedia({ image: {url: 'https://telegra.ph/file/b63528315a84c3205ed98.jpg'}}, { upload: conn.waUploadToServer })
         const interactiveMessage = {
-            body: { text: `┃━━━━━⬣𝙎𝙖𝙛𝙧𝙤𝙩-𝘽𝙤𝙩⬣━━━━━┃*\n\n*❏ ممنوع سب البوت لانك سبيت البوت = سبيت المطور*\n\n*❏ تمتع بالبوت ولا تكتر اسبام للبوت اذا كان لديك مشكله او تريد اضافه اوامر اخري جديده تواصل مع المطور*n\n\*❏ المطورwa.me/201115618853* `.trim() },
+            body: { text: ` *❏ ممنوع سب البوت لانك سبيت البوت = سبيت المطور*\n*❏ تمتع بالبوت ولا تكتر اسبام للبوت اذا كان لديك مشكله او تريد اضافه اوامر اخري جديده تواصل مع المطور* المطور wa.me/201115618853* `.trim() },
             footer: { text: `𝙏𝙝𝙚𝙎𝙖𝙛𝙧𝙤𝙩𝘽𝙤𝙩`.trim() },  
             header: {
                 title: `*┃━━━━━⬣𝙎𝙖𝙛𝙧𝙤𝙩-𝘽𝙤𝙩⬣━━━━━┃*\n\n*◞❐نورت يا حب بوت سفروت🤺🔥*\n\n*◞❐ تفضل القائمة يا  :* @${mentionId.split('@')[0]}`,
