@@ -19,24 +19,24 @@ const getFormattedDate = () => {
 
 // دالة لقراءة عدد المستخدمين من ملف JSON
 const getUserCount = () => {
-    const data = fs.readFileSync('users.json');
+    const data = fs.readFileSync('users.json', 'utf-8');
     const users = JSON.parse(data);
     return users.userCount;
 };
 
 // دالة لزيادة عدد المستخدمين وتحديث الملف
 const incrementUserCount = () => {
-    const data = fs.readFileSync('users.json');
+    const data = fs.readFileSync('users.json', 'utf-8');
     const users = JSON.parse(data);
     users.userCount += 1;
-    fs.writeFileSync('users.json', JSON.stringify(users));
+    fs.writeFileSync('users.json', JSON.stringify(users), 'utf-8');
 };
 
 const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
     const device = await getDevice(m.key.id);
     const mentionId = m.key.participant || m.key.remoteJid;
 
-    if (device !== 'desktop' || device !== 'web') {
+    if (device !== 'desktop' && device !== 'web') {
         // زيادة عدد المستخدمين
         incrementUserCount();
 
@@ -45,7 +45,7 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
         const uptime = formatUptime(process.uptime());
         const currentDate = getFormattedDate();
 
-        var joanimiimg = await prepareWAMessageMedia({ image: { url: 'https://telegra.ph/file/b63528315a84c3205ed98.jpg' } }, { upload: conn.waUploadToServer });
+        const joanimiimg = await prepareWAMessageMedia({ image: { url: 'https://telegra.ph/file/b63528315a84c3205ed98.jpg' } }, { upload: conn.waUploadToServer });
         const interactiveMessage = {
             body: { text: `*وقـت الـتـشـغـيـل: ${uptime}*\n*التاريخ: ${currentDate}*\n*عدد المستخدمين: ${userCount}*`.trim() },
             footer: { text: `ممنوع سب للبوت لانك سبيت للبوت = سبيت المطور تمتع بالبوت ولا تكتر اسبام للبوت اذا كان لديك مشكله او تريد اضافه اوامر اخري جديده تواصل مع المطور المطور* ◞❐wa.me/201115618853`.trim() },
@@ -63,7 +63,7 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
             }
         };
 
-        let msg = generateWAMessageFromContent(m.chat, {
+        const msg = generateWAMessageFromContent(m.chat, {
             viewOnceMessage: {
                 message: {
                     interactiveMessage,
