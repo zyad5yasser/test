@@ -1,18 +1,42 @@
-import {toPTT} from '../lib/converter.js';
-const handler = async (m, {conn, usedPrefix, command}) => {
-  const q = m.quoted ? m.quoted : m;
-  const mime = (m.quoted ? m.quoted : m.msg).mimetype || '';
-  if (!/video|audio/.test(mime)) throw `*[💾مساعده💾]قم بالرد علي الفيديو او الاغنيه اللي عايز تحولها لريكورد*`;
-  const media = await q.download?.();
-  if (!media && !/video/.test(mime)) throw '*الحجم كبير*';
-  if (!media && !/audio/.test(mime)) throw '*الحجم كبير*';
-  const audio = await toPTT(media, 'mp4');
-  if (!audio.data && !/audio/.test(mime)) throw '*[❗تحذير❗] حصل خطأ*';
-  if (!audio.data && !/video/.test(mime)) throw '*[❗تحذير❗] حصل خطأ*';
-  const aa = conn.sendFile(m.chat, audio.data, 'error.mp3', '', m, true, {mimetype: 'audio/mpeg'});
-  if (!aa) return conn.sendMessage(m.chat, {audio: {url: media}, fileName: 'error.mp3', mimetype: 'audio/mpeg', ptt: true}, {quoted: m});
-};
-handler.help = ['tovn (reply)'];
-handler.tags = ['audio'];
-handler.command = /^لريك|to(vn)$/i;
-export default handler;
+/*
+╾━━━━━━━━━━━━━━━━━╼
+`كود التحويل لريكورد و صوت :`
+بواسطة :
+- زيزو : https://wa.me/201508628077
+https://whatsapp.com/channel/0029Vaflefp4Y9ljqmqllP3a
+
+- شعوذة : https://wa.me/201145624848
+https://whatsapp.com/channel/0029Vael6wMJP20ze3IXJk0z
+> تغييرك للحقوق دليل على فشلك ، حاول تتطور وحط حقوقك 🧞.
+╾━━━━━━━━━━━━━━━━━╼
+*/
+
+
+ import uploadFile from '../lib/uploadFile.js'
+import uploadImage from '../lib/uploadImage.js'
+
+const handler = async (m, {command, conn, usedPrefix}) => {
+    let q = m.quoted ? m.quoted : m
+    let mime = (q.msg || q).mimetype || ''
+    if (!mime) throw '*اعمل ريبلي للفيديو او الصوت اللي عاوز تحولو لريك او صوت ي حوب 🦦*'
+    if (command ==='لصوت'){
+    let media = await q.download()
+    let isAudio = /audio/.test(mime) // تحقق من نوع الصوت
+    let isVideo = /video/.test(mime) // تحقق من نوع الفيديو
+    let link = await (isAudio ? uploadFile : uploadImage)(media)
+    
+    // إرسال الرد بصيغة MP3 كرسالة نصية
+    conn.sendMessage(m.chat, {audio: {url: link}, mimetype: 'audio/mpeg', fileName: `converted_audio.mp3`}, {quoted: m});
+    } else if (command ==='لريك'){
+    let media = await q.download()
+let isTele = /audio\/mp3|video\/mp4/.test(mime)
+let link = await (isTele ? uploadImage : uploadFile)(media)
+conn.sendMessage(m.chat, {audio: {url: link}, ptt: true, mimetype: 'audio/mpeg', fileName: `shawaza_zizo_2024.opp`}, {quoted: m});
+        } 
+}; 
+
+handler.help = ['sendmp3 <reply video>', 'sendmp3 <reply audio>']
+handler.tags = ['convert'] 
+handler.command = /^(لصوتي|لريك)$/i
+
+export default handler
