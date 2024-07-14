@@ -9,8 +9,8 @@ const streamPipeline = promisify(pipeline);
 
 const sendAudioWithButtons = async (conn, m, title, thumbnail, url, wm, author, tmpDir, filePath) => {
   let buttons = [
-    {buttonId: 'prev', buttonText: {displayText: 'السابق'}, type: 1},
-    {buttonId: 'next', buttonText: {displayText: 'التالي'}, type: 1},
+    { buttonId: 'prev', buttonText: { displayText: 'السابق' }, type: 1 },
+    { buttonId: 'next', buttonText: { displayText: 'التالي' }, type: 1 },
   ];
   
   let buttonMessage = {
@@ -30,7 +30,7 @@ const sendAudioWithButtons = async (conn, m, title, thumbnail, url, wm, author, 
     },
     buttons: buttons,
     headerType: 4, // For audio messages
-    footer: 'اضغط على زر لتغيير الصوت'
+    footer: 'اضغط على زر لتغيير الصوت',
   };
 
   await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
@@ -55,19 +55,24 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
 
   conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: captvid, footer: 'author' }, { quoted: m });
 
-  const audioStream = ytdl(url, {
-    filter: 'audioonly',
-    quality: 'highestaudio',
-  });
+  try {
+    const audioStream = ytdl(url, {
+      filter: 'audioonly',
+      quality: 'highestaudio',
+    });
 
-  const tmpDir = os.tmpdir();
-  const filePath = `${tmpDir}/${title}.mp3`;
+    const tmpDir = os.tmpdir();
+    const filePath = `${tmpDir}/${title}.mp3`;
 
-  const writableStream = fs.createWriteStream(filePath);
+    const writableStream = fs.createWriteStream(filePath);
 
-  await streamPipeline(audioStream, writableStream);
+    await streamPipeline(audioStream, writableStream);
 
-  await sendAudioWithButtons(conn, m, title, thumbnail, url, wm, 'author', tmpDir, filePath);
+    await sendAudioWithButtons(conn, m, title, thumbnail, url, wm, 'author', tmpDir, filePath);
+  } catch (error) {
+    console.error(`Error downloading audio: ${error}`);
+    throw 'Failed to download the audio. Please try again later.';
+  }
 };
 
 handler.help = ['play'].map(v => v + ' <query>');
