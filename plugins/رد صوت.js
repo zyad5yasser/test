@@ -3,7 +3,7 @@ handler.all = async function (m) {
   let chat = global.db.data.chats[m.chat];
 
   if (/^احا|احااا$/i.test(m.text)) {
-    let vn =  'https://qu.ax/ruSl' ;
+    let vn =  'https://qu.ax/ruSl.wav' ;
     conn.sendPresenceUpdate( 'recording' , m.chat);
     conn.sendMessage(m.chat, { audio: { url: vn }, ptt: true, mimetype:  'audio/mpeg' , fileName: `shawaza_zizo_2024.opp` }, { quoted: m });
   }
