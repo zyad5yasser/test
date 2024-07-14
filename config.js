@@ -3,8 +3,8 @@ import chalk from 'chalk'
 import { fileURLToPath } from 'url' 
 
 global.owner = [
-  ['20115618853', '♯ЅᗩFᏒOT꙯', true],
-  ['201115618856']
+  ['201115618853', '♯ЅᗩFᏒOT꙯', true],
+  ['201115618853']
 ] //Numeros de owner 
 
 global.mods = [''] 
