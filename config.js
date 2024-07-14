@@ -21,7 +21,7 @@ global.APIKeys = { // APIKey Here
 
 // Sticker WM
 global.packname = '𝙎𝙖𝙛𝙧𝙤𝙩𝘽𝙤𝙩' 
-global.author = '@♯ЅᗩFᏒOT꙯' 
+global.author = '♯ЅᗩFᏒOT꙯' 
 
 //--info FG
 global.botName = '𝙎𝙖𝙛𝙧𝙤𝙩-𝙈𝘿'
@@ -29,7 +29,7 @@ global.fgig = 'https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY'
 global.fgsc = 'https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY' 
 global.fgyt = 'https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY'
 global.fgpyp = 'https://www.atom.bio/safrotbob-376'
-global.fglog = 'https://telegra.ph/file/8d0f8b910668fec2807f7.jpg' 
+global.fglog = 'https://telegra.ph/file/a8b5050b72585b93b1380.jpg' 
 
 //--- Grupos WA
 global.id_canal = '120363297635509525@newsletter' //-ID de canal de WhatsApp
