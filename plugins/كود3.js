@@ -136,15 +136,30 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
                                             id: '.المطور'
                                         }
                                     ]
+                                },
+                                {
+                                    highlight_label: 'ON',
+                                    rows: [
+                                        {
+                                            header: '🔧❏━━│قسم جديد│━━❏◡̈⃝🔧',
+                                            title: '',
+                                            description: '🔧❏━━│قسم جديد│━━❏◡̈⃝🔧',
+                                            id: '.جديد'
+                                        }
+                                    ]
+                                },
+                                {
+                                    highlight_label: 'ON',
+                                    rows: [
+                                        {
+                                            header: '🌟❏━━│قسم إضافي│━━❏◡̈⃝🌟',
+                                            title: '',
+                                            description: '🌟❏━━│قسم إضافي│━━❏◡̈⃝🌟',
+                                            id: '.إضافي'
+                                        }
+                                    ]
                                 }
                             ]
-                        })
-                    },
-                    {
-                        name: 'quick_reply',
-                        buttonParamsJson: JSON.stringify({
-                            display_text: 'quick_reply',
-                            id: `message`
                         })
                     },
                     {
