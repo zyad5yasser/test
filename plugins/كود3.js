@@ -1,21 +1,20 @@
-import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys';
-import moment from 'moment-timezone'; // Import moment-timezone for time formatting
+import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys'
 
-const handler = async (m, { conn, text, usedPrefix: prefijo, uptime }) => {
+const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
     const device = await getDevice(m.key.id);
     const mentionId = m.key.participant || m.key.remoteJid;
 
-    if (device !== 'desktop' || device !== 'web') {
-        var joanimiimg = await prepareWAMessageMedia({ image: {url: 'https://telegra.ph/file/b63528315a84c3205ed98.jpg'}}, { upload: conn.waUploadToServer });
-        
-        // Format uptime
-        const formattedUptime = moment.duration(uptime).humanize();
-        
+    // احسب وقت التشغيل
+    const uptime = process.uptime();
+    const uptimeString = `${Math.floor(uptime / 60)} دقائق ${Math.floor(uptime % 60)} ثواني`;
+
+    if (device !== 'desktop' || device !== 'web') {      
+        var joanimiimg = await prepareWAMessageMedia({ image: {url: 'https://telegra.ph/file/b63528315a84c3205ed98.jpg'}}, { upload: conn.waUploadToServer })
         const interactiveMessage = {
-            body: { text: ` *وقـت الـتـشـغـيـل: ${formattedUptime}* `.trim() },
+            body: { text: `*وقـت الـتـشـغـيـل: ${uptimeString}*`.trim() },
             footer: { text: `ممنوع سب للبوت لانك سبيت للبوت = سبيت المطور تمتع بالبوت ولا تكتر اسبام للبوت اذا كان لديك مشكله او تريد اضافه اوامر اخري جديده تواصل مع المطور المطور* ◞❐wa.me/201115618853`.trim() },  
             header: {
-                title: `*┃━━━━━⬣ₛₐfᵣₒₜ bₒₜ⬣━━━━━┃*\n\n*◞❐نورت يحب قائمة الاوامر*\n\n*◞❐ تفضل القائمة يا  :* @${mentionId.split('@')[0]}`,
+                title: `*┃━━━━━⬣ₛₐfᵣₒₜ bₒₜ⬣━━━━━┃*\n\n*◞❐نورت يحب قائمة الاوامر*\n\n*◞❐ تفضل القائمة يا :* @${mentionId.split('@')[0]}`,
                 subtitle: ``,
                 hasMediaAttachment: true,
                 imageMessage: joanimiimg.imageMessage,
@@ -166,7 +165,7 @@ const handler = async (m, { conn, text, usedPrefix: prefijo, uptime }) => {
                 ],
                 messageParamsJson: ''
             }
-        };
+        };        
 
         let msg = generateWAMessageFromContent(m.chat, {
             viewOnceMessage: {
@@ -174,6 +173,15 @@ const handler = async (m, { conn, text, usedPrefix: prefijo, uptime }) => {
                     interactiveMessage,
                 },
             },
-        }, { userJid: conn.user.jid, quoted: m });
+        }, { userJid: conn.user.jid, quoted: m })
         msg.message.viewOnceMessage.message.interactiveMessage.contextInfo = { mentionedJid: [mentionId] };
-        conn.relayMessage(m.chat, msg.message, { messageId: msg.key
+        conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
+
+    } else {
+        conn.sendFile(m.chat, 'JoAnimi•Error.jpg', m);      
+    }    
+};
+handler.help = ['imgboton'];
+handler.tags = ['For Test'];
+handler.command = /^(help|الاوامر|menu|أوامر|menu|اوامر)$/i;
+export default handler;
