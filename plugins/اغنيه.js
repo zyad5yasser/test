@@ -9,8 +9,8 @@ const streamPipeline = promisify(pipeline);
 
 const sendAudioWithButtons = async (conn, m, title, thumbnail, url, wm, author, tmpDir, filePath) => {
   let buttons = [
-    { buttonId: 'prev', buttonText: { displayText: 'السابق' }, type: 1 },
-    { buttonId: 'next', buttonText: { displayText: 'التالي' }, type: 1 },
+    {buttonId: 'prev', buttonText: {displayText: 'السابق'}, type: 1},
+    {buttonId: 'next', buttonText: {displayText: 'التالي'}, type: 1},
   ];
   
   let buttonMessage = {
@@ -30,7 +30,7 @@ const sendAudioWithButtons = async (conn, m, title, thumbnail, url, wm, author, 
     },
     buttons: buttons,
     headerType: 4, // For audio messages
-    footer: 'اضغط على زر لتغيير الصوت',
+    footer: 'اضغط على زر لتغيير الصوت'
   };
 
   await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
@@ -70,7 +70,7 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
 
     await sendAudioWithButtons(conn, m, title, thumbnail, url, wm, 'author', tmpDir, filePath);
   } catch (error) {
-    console.error(`Error downloading audio: ${error}`);
+    console.error(`Error downloading audio: ${error.message}`); // إضافة تسجيل مفصل للخطأ
     throw 'Failed to download the audio. Please try again later.';
   }
 };
