@@ -141,7 +141,7 @@ m.react('📂')
                         })
                     },
                     {
-                        name: 'رسالة الترحيب,
+                        name: 'quick_reply,
                         buttonParamsJson: JSON.stringify({
                             display_text: 'quick_reply',
                             id: `message`
