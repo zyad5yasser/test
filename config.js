@@ -21,7 +21,7 @@ global.APIKeys = { // APIKey Here
 
 // Sticker WM
 global.packname = '𝙎𝙖𝙛𝙧𝙤𝙩𝘽𝙤𝙩' 
-global.author = '♯ЅᗩFᏒOT꙯' 
+global.author = '@♯ЅᗩFᏒOT꙯' 
 
 //--info FG
 global.botName = '𝙎𝙖𝙛𝙧𝙤𝙩-𝙈𝘿'
